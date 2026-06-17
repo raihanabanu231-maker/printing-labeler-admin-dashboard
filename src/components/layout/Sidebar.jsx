@@ -133,20 +133,6 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
                   }
                 }}
               >
-                {/* Active Indicator Background */}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="nav-active-indicator"
-                    initial={{ scale: 1 }}
-                    animate={{ scale: 1.03 }}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.2 }}
-                  />
-                )}
-                
-                {/* Hover Background */}
-                {!isActive && <div className="nav-item-bg-hover" />}
-
                 <Icon size={20} className="nav-icon" />
                 
                 <motion.span 

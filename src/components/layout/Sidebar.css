@@ -102,7 +102,7 @@
   width: 100%;
   text-align: left;
   font-family: inherit;
-  transition: color 0.15s ease; /* Hover Effects Duration: 150ms */
+  transition: all 0.2s ease; /* Hover and Active Effects Duration */
   z-index: 2;
 }
 
@@ -126,51 +126,26 @@
 
 .nav-item:hover {
   color: var(--text-main);
+  background-color: var(--bg-color);
 }
 
 .nav-item:hover .nav-icon {
   transform: translateX(3px); /* Hover effect: Icon moves right */
 }
 
-.nav-item-bg-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--bg-color);
-  border-radius: 14px;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-.nav-item:hover .nav-item-bg-hover {
-  opacity: 1; /* Hover effect: Background softly appears */
-}
-
 .nav-item.active {
   color: white;
   font-weight: 600;
-}
-
-/* Framer motion active indicator morphology */
-.nav-active-indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: var(--primary-purple); /* Primary purple color */
-  border-radius: 14px; /* Border radius: 14px */
-  z-index: 1;
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); /* Subtle premium glow */
+  transform: scale(1.03);
 }
 
-/* Remove active hover BG */
-.nav-item.active .nav-item-bg-hover {
-  display: none;
+.nav-item.active:hover {
+  background-color: var(--primary-purple);
+  color: white;
 }
+
 .nav-item.active:hover .nav-icon {
   transform: none; /* No icon move on active */
 }
