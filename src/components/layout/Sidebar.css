@@ -75,6 +75,13 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1.5rem 1rem;
+  /* Hide scrollbar to prevent layout shift of centered elements */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .sidebar-nav {
