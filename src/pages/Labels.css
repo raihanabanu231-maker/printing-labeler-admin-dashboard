@@ -1,0 +1,54 @@
+.labels-stats-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 1.5rem;
+}
+
+.labels-table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.label-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.label-icon-wrapper {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: var(--bg-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.label-status-badge.status-published {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+
+.label-status-badge.status-draft {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+}
+
+.label-status-badge.status-deleted {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+}
+
+@media (max-width: 1200px) {
+  .labels-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
