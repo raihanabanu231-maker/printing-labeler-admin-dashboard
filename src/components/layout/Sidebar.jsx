@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   LayoutDashboard,
   Building2,
@@ -34,14 +36,82 @@ const navItems = [
 export default function Sidebar({ isCollapsed, toggleCollapse }) {
   const location = useLocation();
 
+  // Animation Variants
+  const sidebarVariants = {
+    expanded: {
+      width: '280px',
+      transition: {
+        duration: 0.35,
+        ease: 'easeInOut',
+        when: 'beforeChildren', // Expand width first, then stagger labels
+        staggerChildren: 0.03
+      }
+    },
+    collapsed: {
+      width: '80px',
+      transition: {
+        duration: 0.35,
+        ease: 'easeInOut',
+        when: 'afterChildren', // Labels disappear first, then shrink
+        staggerChildren: 0.02,
+        staggerDirection: -1
+      }
+    }
+  };
+
+  const itemVariants = {
+    expanded: {
+      opacity: 1,
+      x: 0,
+      display: 'block',
+      transition: { duration: 0.2, ease: 'easeOut' }
+    },
+    collapsed: {
+      opacity: 0,
+      x: -10,
+      transition: { duration: 0.2, ease: 'easeIn' },
+      transitionEnd: { display: 'none' } // Hide completely after fading out
+    }
+  };
+
+  const glowVariants = {
+    expanded: {
+      x: ['-100%', '200%'],
+      opacity: [0, 1, 0],
+      transition: { duration: 0.4, ease: 'linear' }
+    },
+    collapsed: {
+      opacity: 0,
+      transition: { duration: 0 }
+    }
+  };
+
   return (
-    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+    <motion.aside 
+      className="sidebar"
+      initial={false}
+      animate={isCollapsed ? "collapsed" : "expanded"}
+      variants={sidebarVariants}
+    >
+      {/* Subtle Premium Glow Sweep on Expand */}
+      {!isCollapsed && (
+        <motion.div 
+          className="glow-sweep"
+          variants={glowVariants}
+        />
+      )}
+
       <div className="sidebar-header">
         <div className="logo-container">
           <div className="logo-icon">
             <span className="logo-dot"></span>
           </div>
-          {!isCollapsed && <span className="logo-text">LabelSaaS</span>}
+          <motion.span 
+            className="logo-text"
+            variants={itemVariants}
+          >
+            LabelSaaS
+          </motion.span>
         </div>
       </div>
       
@@ -50,6 +120,7 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
+            
             return (
               <Link
                 key={item.name}
@@ -57,8 +128,28 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
                 className={`nav-item ${isActive ? 'active' : ''}`}
                 title={isCollapsed ? item.name : undefined}
               >
+                {/* Active Indicator Background */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="nav-active-indicator"
+                    initial={{ scale: 1 }}
+                    animate={{ scale: 1.03 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.2 }}
+                  />
+                )}
+                
+                {/* Hover Background */}
+                {!isActive && <div className="nav-item-bg-hover" />}
+
                 <Icon size={20} className="nav-icon" />
-                {!isCollapsed && <span className="nav-text">{item.name}</span>}
+                
+                <motion.span 
+                  className="nav-text"
+                  variants={itemVariants}
+                >
+                  {item.name}
+                </motion.span>
               </Link>
             );
           })}
@@ -67,10 +158,12 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
 
       <div className="sidebar-footer">
         <button className="collapse-btn" onClick={toggleCollapse}>
-          <ChevronLeft size={20} className={`collapse-icon ${isCollapsed ? 'rotated' : ''}`} />
-          {!isCollapsed && <span>Collapse Menu</span>}
+          <div className="collapse-btn-icon">
+            <ChevronLeft size={20} className={`collapse-icon ${isCollapsed ? 'rotated' : ''}`} />
+          </div>
+          <motion.span variants={itemVariants}>Collapse Menu</motion.span>
         </button>
       </div>
-    </aside>
+    </motion.aside>
   );
 }
