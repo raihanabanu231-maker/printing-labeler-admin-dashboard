@@ -18,8 +18,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/organizations" element={<Organizations />} />
         <Route path="/users" element={<Users />} />
         <Route path="/labels" element={<Labels />} />
@@ -31,7 +31,7 @@ function App() {
         <Route path="/audit" element={<AuditLogs />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/roles" element={<RolesPermissions />} />
-        <Route path="*" element={<Dashboard />} /> 
+        <Route path="*" element={<Login />} /> 
       </Routes>
     </Router>
   );

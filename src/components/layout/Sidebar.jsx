@@ -17,7 +17,7 @@ import {
 import './Sidebar.css';
 
 const navItems = [
-  { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+  { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'Organizations', path: '/organizations', icon: Building2 },
   { name: 'Users', path: '/users', icon: Users },
   { name: 'Labels', path: '/labels', icon: Tags },
