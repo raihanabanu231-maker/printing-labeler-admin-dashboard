@@ -124,11 +124,11 @@
 }
 
 .nav-text {
-  display: block;
-  position: relative;
+  position: absolute;
+  left: 3.25rem; /* 16px padding + 20px icon + 16px gap = 52px */
   z-index: 3;
   line-height: 1;
-  /* Remove any implicit descender space pushing the container down */
+  white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -173,6 +173,7 @@
   color: var(--text-muted);
   font-weight: 500;
   border-radius: 14px;
+  position: relative;
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 

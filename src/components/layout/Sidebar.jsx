@@ -152,7 +152,7 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
           <div className="collapse-btn-icon">
             <ChevronLeft size={20} className={`collapse-icon ${isCollapsed ? 'rotated' : ''}`} />
           </div>
-          <motion.span variants={itemVariants}>Collapse Menu</motion.span>
+          <motion.span className="nav-text" variants={itemVariants}>Collapse Menu</motion.span>
         </button>
       </div>
     </motion.aside>
