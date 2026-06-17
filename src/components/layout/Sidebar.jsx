@@ -127,6 +127,11 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
                 to={item.path}
                 className={`nav-item ${isActive ? 'active' : ''}`}
                 title={isCollapsed ? item.name : undefined}
+                onClick={() => {
+                  if (!isCollapsed && window.innerWidth <= 1024) {
+                    toggleCollapse();
+                  }
+                }}
               >
                 {/* Active Indicator Background */}
                 {isActive && (
