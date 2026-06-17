@@ -88,7 +88,7 @@ export default function Sidebar({ isCollapsed, toggleCollapse }) {
 
   return (
     <motion.aside 
-      className="sidebar"
+      className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}
       initial={false}
       animate={isCollapsed ? "collapsed" : "expanded"}
       variants={sidebarVariants}
