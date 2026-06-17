@@ -14,6 +14,14 @@
 .topbar-left {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .role-indicator {

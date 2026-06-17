@@ -1,10 +1,13 @@
-import { Search, Bell, Shield } from 'lucide-react';
+import { Search, Bell, Shield, Menu } from 'lucide-react';
 import './Topbar.css';
 
-export default function Topbar() {
+export default function Topbar({ toggleSidebar }) {
   return (
     <header className="topbar">
       <div className="topbar-left">
+        <button className="icon-btn menu-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={20} />
+        </button>
         <div className="role-indicator">
           <Shield size={16} className="role-icon" />
           <span className="role-text">Super Admin</span>

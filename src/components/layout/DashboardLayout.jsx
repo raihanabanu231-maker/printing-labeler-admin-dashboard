@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }) {
     <div className="dashboard-layout">
       <Sidebar isCollapsed={isCollapsed} toggleCollapse={toggleCollapse} />
       <div className="main-content-wrapper">
-        <Topbar />
+        <Topbar toggleSidebar={toggleCollapse} />
         <main className="main-content">
           {children}
         </main>
